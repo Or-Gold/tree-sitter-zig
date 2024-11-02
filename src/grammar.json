@@ -901,6 +901,10 @@
             {
               "type": "SYMBOL",
               "name": "WhileStatement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "SwitchExpr"
             }
           ]
         }

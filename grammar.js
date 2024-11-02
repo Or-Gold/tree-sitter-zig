@@ -268,7 +268,7 @@ module.exports = grammar({
         LoopStatement: ($) =>
             seq(
                 optional(keyword("inline", $)),
-                choice($.ForStatement, $.WhileStatement)
+                choice($.ForStatement, $.WhileStatement, $.SwitchExpr)
             ),
 
         ForStatement: ($) =>

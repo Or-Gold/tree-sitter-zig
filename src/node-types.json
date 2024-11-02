@@ -2044,6 +2044,10 @@
           "named": true
         },
         {
+          "type": "SwitchExpr",
+          "named": true
+        },
+        {
           "type": "WhileStatement",
           "named": true
         }
