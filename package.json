@@ -40,14 +40,5 @@
     "parse": "tree-sitter parse",
     "install": "node-gyp-build",
     "prebuildify": "prebuildify --napi --strip"
-  },
-  "tree-sitter": [
-    {
-      "scope": "source.zig",
-      "injection-regex": "zig",
-      "file-types": [
-        "zig"
-      ]
-    }
-  ]
+  }
 }

@@ -337,7 +337,7 @@ module.exports = grammar({
                     $.AsmExpr,
                     $.IfExpr,
                     seq(keyword("break", $), optional($.BreakLabel), optional($._Expr)),
-                    seq(keyword("continue", $), optional($.BreakLabel)),
+                    seq(keyword("continue", $), optional($.BreakLabel), optional($._Expr)),
                     seq(keyword(choice("comptime", "nosuspend", "resume"), $), $._Expr),
                     seq(keyword("return", $), optional($._Expr)),
                     seq(optional($.BlockLabel), $.LoopExpr),
