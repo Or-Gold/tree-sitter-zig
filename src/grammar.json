@@ -170,158 +170,162 @@
       ]
     },
     "Decl": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "STRING",
-                      "value": "export"
-                    },
-                    {
-                      "type": "SEQ",
-                      "members": [
-                        {
-                          "type": "STRING",
-                          "value": "extern"
-                        },
-                        {
-                          "type": "CHOICE",
-                          "members": [
-                            {
-                              "type": "SYMBOL",
-                              "name": "STRINGLITERALSINGLE"
-                            },
-                            {
-                              "type": "BLANK"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "CHOICE",
-                      "members": [
-                        {
-                          "type": "STRING",
-                          "value": "inline"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": "noinline"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "SYMBOL",
-              "name": "FnProto"
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": ";"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "Block"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "STRING",
-                      "value": "export"
-                    },
-                    {
-                      "type": "SEQ",
-                      "members": [
-                        {
-                          "type": "STRING",
-                          "value": "extern"
-                        },
-                        {
-                          "type": "CHOICE",
-                          "members": [
-                            {
-                              "type": "SYMBOL",
-                              "name": "STRINGLITERALSINGLE"
-                            },
-                            {
-                              "type": "BLANK"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "threadlocal"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "SYMBOL",
-              "name": "VarDecl"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "usingnamespace"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_Expr"
-            },
-            {
-              "type": "STRING",
-              "value": ";"
-            }
-          ]
-        }
-      ]
+      "type": "PREC",
+      "value": 11,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "export"
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "STRING",
+                            "value": "extern"
+                          },
+                          {
+                            "type": "CHOICE",
+                            "members": [
+                              {
+                                "type": "SYMBOL",
+                                "name": "STRINGLITERALSINGLE"
+                              },
+                              {
+                                "type": "BLANK"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "STRING",
+                            "value": "inline"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "noinline"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "FnProto"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ";"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "Block"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "export"
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "STRING",
+                            "value": "extern"
+                          },
+                          {
+                            "type": "CHOICE",
+                            "members": [
+                              {
+                                "type": "SYMBOL",
+                                "name": "STRINGLITERALSINGLE"
+                              },
+                              {
+                                "type": "BLANK"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "threadlocal"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "VarDecl"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "usingnamespace"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_Expr"
+              },
+              {
+                "type": "STRING",
+                "value": ";"
+              }
+            ]
+          }
+        ]
+      }
     },
     "FnProto": {
       "type": "SEQ",
@@ -420,7 +424,7 @@
         }
       ]
     },
-    "VarDecl": {
+    "_VarDecl": {
       "type": "SEQ",
       "members": [
         {
@@ -505,6 +509,30 @@
           "type": "CHOICE",
           "members": [
             {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "VarDecl": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_VarDecl"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
               "type": "SEQ",
               "members": [
                 {
@@ -529,7 +557,7 @@
       ]
     },
     "ContainerField": {
-      "type": "PREC",
+      "type": "PREC_RIGHT",
       "value": 2,
       "content": {
         "type": "SEQ",
@@ -742,10 +770,6 @@
             "name": "LabeledStatement"
           },
           {
-            "type": "SYMBOL",
-            "name": "SwitchExpr"
-          },
-          {
             "type": "SEQ",
             "members": [
               {
@@ -870,6 +894,10 @@
               {
                 "type": "SYMBOL",
                 "name": "LoopStatement"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "SwitchExpr"
               }
             ]
           }
@@ -901,10 +929,6 @@
             {
               "type": "SYMBOL",
               "name": "WhileStatement"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "SwitchExpr"
             }
           ]
         }
@@ -1524,8 +1548,17 @@
                 ]
               },
               {
-                "type": "SYMBOL",
-                "name": "LoopExpr"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "LoopExpr"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "SwitchExpr"
+                  }
+                ]
               }
             ]
           },
@@ -2005,158 +2038,158 @@
       }
     },
     "_PrimaryTypeExpr": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "BUILTINIDENTIFIER"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "FnCallArguments"
-            }
-          ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "CHAR_LITERAL"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "ContainerDecl"
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "."
-            },
-            {
-              "type": "FIELD",
-              "name": "field_constant",
-              "content": {
+      "type": "PREC",
+      "value": 10,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
                 "type": "SYMBOL",
-                "name": "IDENTIFIER"
-              }
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "."
-            },
-            {
-              "type": "SYMBOL",
-              "name": "InitList"
-            }
-          ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "ErrorSetDecl"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "FLOAT"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "FnProto"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "GroupedExpr"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "LabeledTypeExpr"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "IfTypeExpr"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "INTEGER"
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "comptime"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_TypeExpr"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "error"
-            },
-            {
-              "type": "STRING",
-              "value": "."
-            },
-            {
-              "type": "FIELD",
-              "name": "field_constant",
-              "content": {
+                "name": "BUILTINIDENTIFIER"
+              },
+              {
                 "type": "SYMBOL",
-                "name": "IDENTIFIER"
+                "name": "FnCallArguments"
               }
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": "false"
-        },
-        {
-          "type": "STRING",
-          "value": "null"
-        },
-        {
-          "type": "STRING",
-          "value": "anyframe"
-        },
-        {
-          "type": "STRING",
-          "value": "true"
-        },
-        {
-          "type": "STRING",
-          "value": "undefined"
-        },
-        {
-          "type": "STRING",
-          "value": "unreachable"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_STRINGLITERAL"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "SwitchExpr"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "BuildinTypeExpr"
-        }
-      ]
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "CHAR_LITERAL"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "ContainerDecl"
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "."
+              },
+              {
+                "type": "FIELD",
+                "name": "field_constant",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "IDENTIFIER"
+                }
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "."
+              },
+              {
+                "type": "SYMBOL",
+                "name": "InitList"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "ErrorSetDecl"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "FLOAT"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "FnProto"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "GroupedExpr"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "LabeledTypeExpr"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "IfTypeExpr"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "INTEGER"
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "comptime"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_TypeExpr"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "error"
+              },
+              {
+                "type": "STRING",
+                "value": "."
+              },
+              {
+                "type": "FIELD",
+                "name": "field_constant",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "IDENTIFIER"
+                }
+              }
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": "false"
+          },
+          {
+            "type": "STRING",
+            "value": "null"
+          },
+          {
+            "type": "STRING",
+            "value": "anyframe"
+          },
+          {
+            "type": "STRING",
+            "value": "true"
+          },
+          {
+            "type": "STRING",
+            "value": "undefined"
+          },
+          {
+            "type": "STRING",
+            "value": "unreachable"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_STRINGLITERAL"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "BuildinTypeExpr"
+          }
+        ]
+      }
     },
     "BuildinTypeExpr": {
       "type": "TOKEN",
@@ -2480,43 +2513,56 @@
       ]
     },
     "LabeledTypeExpr": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "BlockLabel"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "Block"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "BlockLabel"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "SYMBOL",
-              "name": "LoopTypeExpr"
-            }
-          ]
-        }
-      ]
+      "type": "PREC",
+      "value": 9,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "BlockLabel"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "Block"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "BlockLabel"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "LoopTypeExpr"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "SwitchExpr"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     "LoopTypeExpr": {
       "type": "SEQ",

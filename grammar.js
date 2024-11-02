@@ -159,7 +159,7 @@ module.exports = grammar({
             seq(keyword("comptime", $), $.Block),
 
         Decl: ($) =>
-            choice(
+            prec(PREC.prefix, choice(
                 seq(
                     optional(choice(
                         keyword("export", $),
@@ -180,7 +180,7 @@ module.exports = grammar({
                     $.VarDecl
                 ),
                 seq(keyword("usingnamespace", $), $._Expr, SEMICOLON)
-            ),
+            )),
 
         FnProto: ($) =>
             seq(
@@ -195,20 +195,27 @@ module.exports = grammar({
                 $._TypeExpr
             ),
 
+        _VarDecl: ($) => 
+        seq(
+            keyword(choice("const", "var"), $),
+            field("variable_type_function", $.IDENTIFIER),
+            optional(seq(COLON, $._TypeExpr)),
+            optional($.ByteAlign),
+            optional($.AddrSpace),
+            optional($.LinkSection),
+            optional(COMMA)
+        ),
+        
+
         VarDecl: ($) =>
             seq(
-                keyword(choice("const", "var"), $),
-                field("variable_type_function", $.IDENTIFIER),
-                optional(seq(COLON, $._TypeExpr)),
-                optional($.ByteAlign),
-                optional($.AddrSpace),
-                optional($.LinkSection),
+                repeat($._VarDecl),
                 optional(seq(EQUAL, $._Expr)),
                 SEMICOLON
             ),
 
         ContainerField: ($) =>
-            prec(PREC.assign,
+            prec.right(PREC.assign,
                 seq(
                     optional($.doc_comment),
                     optional(keyword("comptime", $)),
@@ -246,7 +253,6 @@ module.exports = grammar({
                     ),
                     $.IfStatement,
                     $.LabeledStatement,
-                    $.SwitchExpr,
                     seq($.AssignExpr, SEMICOLON)
                 )
             ),
@@ -262,13 +268,13 @@ module.exports = grammar({
         LabeledStatement: ($) =>
             prec(
                 PREC.curly,
-                seq(optional($.BlockLabel), choice($.Block, $.LoopStatement))
+                seq(optional($.BlockLabel), choice($.Block, $.LoopStatement, $.SwitchExpr))
             ),
 
         LoopStatement: ($) =>
             seq(
                 optional(keyword("inline", $)),
-                choice($.ForStatement, $.WhileStatement, $.SwitchExpr)
+                choice($.ForStatement, $.WhileStatement)
             ),
 
         ForStatement: ($) =>
@@ -340,7 +346,7 @@ module.exports = grammar({
                     seq(keyword("continue", $), optional($.BreakLabel), optional($._Expr)),
                     seq(keyword(choice("comptime", "nosuspend", "resume"), $), $._Expr),
                     seq(keyword("return", $), optional($._Expr)),
-                    seq(optional($.BlockLabel), $.LoopExpr),
+                    seq(optional($.BlockLabel), choice($.LoopExpr, $.SwitchExpr)),
                     $.Block,
                     $._CurlySuffixExpr
                 )
@@ -415,7 +421,7 @@ module.exports = grammar({
             ),
 
         _PrimaryTypeExpr: ($) =>
-            choice(
+            prec(PREC.prefix - 1, choice(
                 seq($.BUILTINIDENTIFIER, $.FnCallArguments),
                 $.CHAR_LITERAL,
                 $.ContainerDecl,
@@ -437,9 +443,8 @@ module.exports = grammar({
                 keyword("undefined", $),
                 keyword("unreachable", $),
                 $._STRINGLITERAL,
-                $.SwitchExpr,
                 $.BuildinTypeExpr
-            ),
+            )),
 
         BuildinTypeExpr: (_) => token(choice(...buildin_type)),
         ContainerDecl: ($) =>
@@ -468,10 +473,10 @@ module.exports = grammar({
             seq(keyword("else", $), optional($.Payload), $._TypeExpr),
 
         LabeledTypeExpr: ($) =>
-            choice(
+            prec(PREC.prefix - 2, choice(
                 seq($.BlockLabel, $.Block),
-                seq(optional($.BlockLabel), $.LoopTypeExpr)
-            ),
+                seq(optional($.BlockLabel), choice($.LoopTypeExpr, $.SwitchExpr))
+            )),
 
         LoopTypeExpr: ($) =>
             seq(
